@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 
+import TechItem from './TechItem';
+
 export default class Techlist extends Component {
+  /**
+   * static defaultProps = {
+   *  tech: 'Oculto',
+   * };
+   *
+   * static propTypes = {
+   *  stech: PropTypes.string.isRequired,
+   * }
+   */
+
   state = {
     newTech: '',
     techs: ['Node.js', 'ReactJS', 'React Native'],
@@ -29,12 +41,11 @@ export default class Techlist extends Component {
       <form onSubmit={this.handleSubmit}>
         <ul>
           {techs.map(tech => (
-            <li key={tech}>
-              {tech}
-              <button onClick={() => this.handleDelete(tech)} type="button">
-                Remover
-              </button>
-            </li>
+            <TechItem
+              key={tech}
+              tech={tech}
+              onDelete={() => this.handleDelete(tech)}
+            />
           ))}
         </ul>
         <input
